@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:legarage/frontend/routes.dart';
+import 'package:legarage/presentation/routes.dart';
+import 'package:legarage/utils/theme/light_mode.dart';
 
 
 void main() {
@@ -12,8 +13,9 @@ class MyApp extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: lighMode,
       initialRoute: '/',
       onGenerateRoute: AppRouter.generateRoute,
     );

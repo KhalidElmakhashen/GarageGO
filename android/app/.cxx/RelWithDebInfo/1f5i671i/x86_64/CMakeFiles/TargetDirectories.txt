@@ -1,0 +1,2 @@
+C:/Users/khale/OneDrive/Documents/my projects/GarageGO/android/app/.cxx/RelWithDebInfo/1f5i671i/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/khale/OneDrive/Documents/my projects/GarageGO/android/app/.cxx/RelWithDebInfo/1f5i671i/x86_64/CMakeFiles/rebuild_cache.dir
