@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:legarage/presentation/widgets/notification_tiles.dart';
+import 'package:legarage/core/widgets/notification_tiles.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});

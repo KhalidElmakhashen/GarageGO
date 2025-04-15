@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:legarage/presentation/pages/home_page.dart';
-import 'package:legarage/presentation/pages/login_page.dart';
-import 'package:legarage/presentation/pages/register_page.dart';
+import 'package:legarage/features/log_in/ui/login_page.dart';
+
+import 'package:legarage/features/main_wrapper/home_page.dart';
+import 'package:legarage/features/sign_up/ui/register_page.dart';
 
 class AppRouter {
   static Route? generateRoute(RouteSettings settings) {

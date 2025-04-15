@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:legarage/presentation/widgets/car_info_card.dart';
-import 'package:legarage/presentation/widgets/personal_info_card.dart';
-import 'package:legarage/presentation/widgets/profile_header.dart';
+import 'package:legarage/core/widgets/car_info_card.dart';
+import 'package:legarage/core/widgets/personal_info_card.dart';
+import 'package:legarage/core/widgets/profile_header.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

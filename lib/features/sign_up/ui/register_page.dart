@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:legarage/presentation/widgets/custom_text.dart';
+import 'package:legarage/core/widgets/custom_text.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({super.key});

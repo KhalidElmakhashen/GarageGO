@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:legarage/presentation/widgets/camera_photage.dart';
-import 'package:legarage/presentation/widgets/current_cost_card.dart';
-import 'package:legarage/presentation/widgets/custom_timer.dart';
-import 'package:legarage/presentation/widgets/nearest_way.dart';
-import 'package:legarage/presentation/widgets/spot_details_card.dart';
+import 'package:legarage/core/widgets/camera_photage.dart';
+import 'package:legarage/core/widgets/current_cost_card.dart';
+import 'package:legarage/core/widgets/custom_timer.dart';
+import 'package:legarage/core/widgets/nearest_way.dart';
+import 'package:legarage/core/widgets/spot_details_card.dart';
 
 class CurrentPage extends StatelessWidget {
   const CurrentPage({super.key});

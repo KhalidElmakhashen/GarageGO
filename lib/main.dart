@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:legarage/presentation/routes.dart';
-import 'package:legarage/utils/theme/light_mode.dart';
+import 'package:legarage/core/routing/routes.dart';
+import 'package:legarage/core/theming/light_mode.dart';
 
 
 void main() {
