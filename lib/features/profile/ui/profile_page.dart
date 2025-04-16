@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:legarage/core/helpers/extensions.dart';
+import 'package:legarage/core/helpers/shared_pref_helper.dart';
+import 'package:legarage/core/routing/routes.dart';
 import 'package:legarage/core/widgets/car_info_card.dart';
 import 'package:legarage/core/widgets/personal_info_card.dart';
 import 'package:legarage/core/widgets/profile_header.dart';
@@ -13,7 +16,10 @@ class ProfilePage extends StatelessWidget {
         appBar: AppBar(
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () async{
+                  await SharedPrefHelper.clearAllSecuredData();
+                  context.pushNamed(Routes.loginScreen);
+                },
                 icon: Icon(
                   Icons.settings,
                   color: Theme.of(context).colorScheme.surface,
