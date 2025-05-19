@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:legarage/features/current_page/current_page.dart';
-import 'package:legarage/features/explore_page/explore_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:legarage/core/di/dependency_injection.dart';
+import 'package:legarage/features/current_page/ui/current_page.dart';
+import 'package:legarage/features/current_page/logic/delete_reservation_cubit/delete_reservation_cubit.dart';
+import 'package:legarage/features/explore_page/data/repo/reservation_repo.dart';
+import 'package:legarage/features/explore_page/logic/add_reservation_cubit/add_reservation_cubit.dart';
+import 'package:legarage/features/explore_page/logic/garage_by_id_cubit/garagebyid_cubit.dart';
+import 'package:legarage/features/explore_page/logic/toggle_panel_cubit/toggle_panel_cubit.dart';
+import 'package:legarage/features/explore_page/logic/update_ui_cubit/update_ui_cubit.dart';
+import 'package:legarage/features/explore_page/ui/explore_page.dart';
+import 'package:legarage/features/google_map/logic/current_position_cubit/google_map_cubit.dart';
+import 'package:legarage/features/google_map/logic/garages_cubit/garages_cubit.dart';
 import 'package:legarage/features/main_wrapper/widgets/nav_bar.dart';
 import 'package:legarage/features/notification/ui/notification_page.dart';
 import 'package:legarage/features/profile/ui/profile_page.dart';
@@ -21,15 +31,48 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       // App Body
       body: PageView(
+        physics: currentPage == 0 ? const NeverScrollableScrollPhysics() : null,
         onPageChanged: (int index) => setState(() {
           currentPage = index;
         }),
         controller: pageController,
-        children: const [
-          ExplorePage(),
-          CurrentPage(),
-          NotificationPage(),
-          ProfilePage(),
+        children: [
+          MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => TogglePanelCubit(),
+              ),
+              BlocProvider(
+                create: (context) => GoogleMapCubit(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<GaragesCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<GaragebyidCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<AddReservationCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => UpdateUiCubit(),
+              ),
+            ],
+            child: ExplorePage(),
+          ),
+          MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<GaragebyidCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<DeleteReservationCubit>(),
+              ),
+            ],
+            child: const CurrentPage(),
+          ),
+          const NotificationPage(),
+          const ProfilePage(),
         ],
       ),
 

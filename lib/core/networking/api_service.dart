@@ -1,11 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:legarage/core/networking/api_constants.dart';
-import 'package:legarage/features/login/data/models/login_request_body.dart';
-import 'package:legarage/features/login/data/models/login_response.dart';
+import 'package:legarage/features/auth/login/data/models/login_request_body.dart';
+import 'package:legarage/features/auth/login/data/models/login_response.dart';
+import 'package:legarage/features/auth/verifing_email/data/models/verification_email_request_body.dart';
+import 'package:legarage/features/auth/verifing_email/data/models/verification_email_response.dart';
+import 'package:legarage/features/current_page/data/models/delete_reservation_response.dart';
+import 'package:legarage/features/current_page/data/repo/delete_reservation_repo.dart';
+import 'package:legarage/features/explore_page/data/models/get_garage_by_id_response_body.dart';
+import 'package:legarage/features/explore_page/data/models/reserve_request_body.dart';
+import 'package:legarage/features/explore_page/data/models/reserve_response.dart';
+import 'package:legarage/features/google_map/data/models/get_all_garages_response_body.dart';
 import 'package:retrofit/retrofit.dart';
-
-import '../../features/sign_up/data/models/sign_up_request_body.dart';
-import '../../features/sign_up/data/models/sign_up_response.dart';
+import '../../features/auth/sign_up/data/models/sign_up_request_body.dart';
+import '../../features/auth/sign_up/data/models/sign_up_response.dart';
 
 part 'api_service.g.dart';
 
@@ -22,4 +29,29 @@ abstract class ApiService {
   Future<SignupResponse> signup(
     @Body() SignupRequestBody signupRequestBody,
   );
+
+  @POST(ApiConstants.verifyEmail)
+  Future<VerificationEmailResponse> verifyEmail(
+    @Body() VerificationEmailRequestBody verificationEmailRequestBody,
+  );
+
+  @GET(ApiConstants.getAllGarages)
+  Future<GetAllGaragesResponse> getAllGarages();
+
+  @GET(ApiConstants.getGarageById)
+    Future<GetGarageByIdResponse> getGarageById(
+      @Path('id') int garageId,
+    );
+
+  @POST(ApiConstants.addReservationRecord)
+    Future<ReserveResponse> addReservation(
+      @Body() ReserveRequestBody reservationRequestBody,
+    );
+
+  @DELETE(ApiConstants.deleteReservationRecord)
+    Future<DeleteReservationResponse> deleteReservation(
+      @Path('id') int reservationId,
+    );
+
+
 }

@@ -16,9 +16,13 @@ class ProfilePage extends StatelessWidget {
         appBar: AppBar(
           actions: [
             IconButton(
-                onPressed: () async{
+                onPressed: () async {
                   await SharedPrefHelper.clearAllSecuredData();
-                  context.pushNamed(Routes.loginScreen);
+                  context.pushNamedAndRemoveUntil(
+                    Routes.loginScreen ,
+                    (Route<dynamic> route) => false,
+                    predicate: (Route<dynamic> route) => false,
+                  );
                 },
                 icon: Icon(
                   Icons.settings,
@@ -73,5 +77,3 @@ class ProfilePage extends StatelessWidget {
         ));
   }
 }
-
-

@@ -8,12 +8,14 @@ import 'package:legarage/core/routing/routes.dart';
 import 'package:legarage/core/theming/light_mode.dart';
 import 'package:legarage/core/helpers/extensions.dart';
 
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
   // To fix texts being hidden bug in flutter_screenutil in release mode.
   await ScreenUtil.ensureScreenSize();
   await checkIfLoggedInUser();
+  await checkIfIsReserved();
   runApp(const MyApp());
 }
 
@@ -39,9 +41,26 @@ class MyApp extends StatelessWidget {
 checkIfLoggedInUser() async {
   String? userToken =
       await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
+  // just for development purposes i switch the condition , after done make true--> then false
   if (!userToken.isNullOrEmpty()) {
     isLoggedInUser = true;
   } else {
     isLoggedInUser = false;
   }
 }
+
+checkIfIsReserved() async {
+  String? reservationId =
+      await SharedPrefHelper.getString(SharedPrefKeys.reservationId);
+  if (!reservationId.isNullOrEmpty()) {
+    isReserved = true;
+  } else {
+    isReserved = false;
+  }
+  print('isReserved: $isReserved');
+  print('reservationId: $reservationId');
+}
+
+
+
+

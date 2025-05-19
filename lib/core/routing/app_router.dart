@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:legarage/core/di/dependency_injection.dart';
 import 'package:legarage/core/routing/routes.dart';
-import 'package:legarage/features/login/logic/cubit/login_cubit.dart';
-import 'package:legarage/features/login/ui/login_screen.dart';
+import 'package:legarage/features/auth/login/logic/cubit/login_cubit.dart';
+import 'package:legarage/features/auth/login/ui/login_screen.dart';
 
 import 'package:legarage/features/main_wrapper/home_page.dart';
 import 'package:legarage/features/onboarding/onboarding_screen.dart';
-import 'package:legarage/features/sign_up/logic/sign_up_cubit.dart';
-import 'package:legarage/features/sign_up/ui/sign_up_screen.dart';
+import 'package:legarage/features/auth/sign_up/logic/sign_up_cubit.dart';
+import 'package:legarage/features/auth/sign_up/ui/sign_up_screen.dart';
+import 'package:legarage/features/auth/verifing_email/logic/verification_email_cubit.dart';
+import 'package:legarage/features/auth/verifing_email/ui/verifing_email_screen.dart';
 
 // class AppRouter {
 //   static Route? generateRoute(RouteSettings settings) {
@@ -48,6 +50,13 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => getIt<SignupCubit>(),
             child: const SignupScreen(),
+          ),
+        );
+      case Routes.verificationScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<VerificationEmailCubit>(),
+            child: const VerifingEmailScreen(),
           ),
         );
       case Routes.homeScreen:

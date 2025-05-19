@@ -1,8 +1,15 @@
 class ApiConstants {
-  static const String apiBaseUrl = "https://vcare.integration25.com/api/";
+  // static const String apiBaseUrl = "https://e8b3-197-63-172-54.ngrok-free.app/api/";
+  static const String apiBaseUrl = "https://ispot.runasp.net/api/";
+  // static const String apiBaseUrl = "http://192.168.1.17:5158/api/";
 
   static const String login = "auth/login";
-  static const String signup = "auth/register";
+  static const String signup = "Auth/Register";
+  static const String verifyEmail = "Auth/VerifyEmail";
+  static const String getAllGarages = "Garages/GetAllGarages";
+  static const String getGarageById = "Garages/GetGarageById/{id}";
+  static const String addReservationRecord = "ReservationRecords/Add";
+  static const String deleteReservationRecord = "ReservationRecords/Delete/{id}";
   
 }
 
