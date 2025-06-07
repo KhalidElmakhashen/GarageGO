@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
+// import 'package:camera/camera.dart';
 import 'package:flutter_vlc_player/flutter_vlc_player.dart';
 
 
@@ -43,8 +43,8 @@ class _CameraPhotageState extends State<CameraPhotage> {
                       Colors.blue.shade900
                     ])),
                 child: cameraOpen
-                    ? const CameraView()
-                    // ?  CameraStreamPage()
+                    // ? const CameraView()
+                    ?  CameraStreamPage()
                     : const Center(
                   child: SizedBox(height: 200,child: Icon(Icons.camera,size: 50,)),
                 ),
@@ -131,7 +131,7 @@ class _CameraStreamPageState extends State<CameraStreamPage> {
   void initState() {
     super.initState();
     _vlcViewController = VlcPlayerController.network(
-      'rtsp://192.168.0.108:8554/left',
+      'rtsp://192.168.0.107:8554/left',
       hwAcc: HwAcc.auto,
       autoPlay: true,
       options: VlcPlayerOptions(),
@@ -192,43 +192,43 @@ class _CameraStreamPage2State extends State<CameraStreamPage2> {
 }
 
 
-class CameraView extends StatefulWidget {
-  const CameraView({super.key});
+// class CameraView extends StatefulWidget {
+//   const CameraView({super.key});
 
-  @override
-  State<CameraView> createState() => _CameraViewState();
-}
+//   @override
+//   State<CameraView> createState() => _CameraViewState();
+// }
 
-class _CameraViewState extends State<CameraView> {
-  List<CameraDescription> cameras = [];
-  CameraController? cameraController;
+// class _CameraViewState extends State<CameraView> {
+//   List<CameraDescription> cameras = [];
+//   CameraController? cameraController;
 
-  @override
-  void initState() {
-    super.initState();
-    _setUpCameraController();
-  }
+//   @override
+//   void initState() {
+//     super.initState();
+//     _setUpCameraController();
+//   }
 
 
-  @override
-  Widget build(BuildContext context) {
-    if( cameraController == null || cameraController?.value.isInitialized == false){
-      return const SizedBox(height: 200,);
-    }
-    return CameraPreview(cameraController!);
-  }
+//   @override
+//   Widget build(BuildContext context) {
+//     if( cameraController == null || cameraController?.value.isInitialized == false){
+//       return const SizedBox(height: 200,);
+//     }
+//     return CameraPreview(cameraController!);
+//   }
 
-  Future<void> _setUpCameraController() async {
-    List<CameraDescription> _cameras = await availableCameras();
-    if (_cameras.isNotEmpty) {
-      setState(() {
-        cameras = _cameras;
-        cameraController =
-            CameraController(_cameras.last, ResolutionPreset.high);
-      });
-      cameraController?.initialize().then((_) {
-        setState(() {});
-      });
-    }
-  }
-}
+//   Future<void> _setUpCameraController() async {
+//     List<CameraDescription> _cameras = await availableCameras();
+//     if (_cameras.isNotEmpty) {
+//       setState(() {
+//         cameras = _cameras;
+//         cameraController =
+//             CameraController(_cameras.last, ResolutionPreset.high);
+//       });
+//       cameraController?.initialize().then((_) {
+//         setState(() {});
+//       });
+//     }
+//   }
+// }

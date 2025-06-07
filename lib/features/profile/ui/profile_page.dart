@@ -1,79 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:legarage/core/helpers/constants.dart';
 import 'package:legarage/core/helpers/extensions.dart';
 import 'package:legarage/core/helpers/shared_pref_helper.dart';
 import 'package:legarage/core/routing/routes.dart';
-import 'package:legarage/core/widgets/car_info_card.dart';
-import 'package:legarage/core/widgets/personal_info_card.dart';
-import 'package:legarage/core/widgets/profile_header.dart';
+import 'package:legarage/core/widgets/image_back_ground_container.dart';
+import 'package:legarage/features/profile/logic/get_user_data_cubit/get_user_data_cubit.dart';
+import 'package:legarage/features/profile/ui/widgets/profile_page_lisnter.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  Future<int> getUserId() async {
+    String saveId =
+        await SharedPrefHelper.getSecuredString(SharedPrefKeys.userId);
+    return int.parse(saveId);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUserId().then((userid) =>
+        context.read<GetUserDataCubit>().getUserData(userid).whenComplete(() {}));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // AppBar
-        appBar: AppBar(
-          actions: [
-            IconButton(
-                onPressed: () async {
-                  await SharedPrefHelper.clearAllSecuredData();
-                  context.pushNamedAndRemoveUntil(
-                    Routes.loginScreen ,
-                    (Route<dynamic> route) => false,
-                    predicate: (Route<dynamic> route) => false,
-                  );
-                },
-                icon: Icon(
-                  Icons.settings,
-                  color: Theme.of(context).colorScheme.surface,
-                ))
-          ],
-          title: Text(
-            'Profile Page',
-            style: TextStyle(color: Theme.of(context).colorScheme.surface),
-          ),
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      // AppBar
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () async {
+                await SharedPrefHelper.clearAllSecuredData();
+                context.pushNamedAndRemoveUntil(
+                  Routes.loginScreen,
+                  (Route<dynamic> route) => false,
+                  predicate: (Route<dynamic> route) => false,
+                );
+              },
+              icon: Icon(
+                Icons.logout_sharp,
+                color: Theme.of(context).colorScheme.surface,
+              ))
+        ],
+        title: const Text(
+          'Profile Page',
+          style: TextStyle(color: Colors.white),
         ),
+        backgroundColor: Colors.transparent,
+      ),
 
-        // Body
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
-          child: Column(
-            children: [
-              // profile header
-              ProfileHeader(),
-
-              // divider
-              Divider(
-                height: 25,
-                color: Colors.grey[800],
-                indent: 8,
-                endIndent: 8,
-              ),
-
-              // personal info card
-              PersonalInfoCard(
-                fullName: "Khaled Abdo Abdelhamed",
-                nationalId: '30207231101592',
-                gender: "male",
-                age: '22',
-              ),
-
-              // card info card
-              CarInfoCard(
-                model: 'BMW X6',
-                licensePlateNumbe: 'ر ق م | 1',
-                fuelType: 'fuel',
-                year: '2025',
-                insuranceStatus: 'Active',
-                transmission: 'Manual',
-                lincenseExpiryDate: '1/1/2030',
-              )
-
-              // payment method card
-            ],
+      // Body
+      body:  const Stack(
+        children: [
+           ImageBackGroundContainer(
+            imagePath: 'assets/images/2522356.jpg',
           ),
-        ));
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+              child: ProfilePageLisnter()
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

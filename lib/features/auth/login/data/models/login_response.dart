@@ -17,9 +17,11 @@ class LoginResponse {
 @JsonSerializable()
 class UserData {
   String? token;
+  int? userId;
+  int? reservationId;
 
 
-  UserData({this.token});
+  UserData({this.token, this.userId, this.reservationId});
 
   factory UserData.fromJson(Map<String, dynamic> json) =>
       _$UserDataFromJson(json);

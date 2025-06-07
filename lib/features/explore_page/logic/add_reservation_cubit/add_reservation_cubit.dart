@@ -14,11 +14,15 @@ class AddReservationCubit extends Cubit<AddReservationState> {
   AddReservationCubit(this._reservationRepo) : super(AddReservationState.initial());
 
   ReservationRepo _reservationRepo;
-
+  // String? endTime;
+  // String? startTime;
     Future<void> addReservationRecord(int userId,int garageId) async {
     emit(const AddReservationState.loading());
     final response = await _reservationRepo.addReservation(userId,garageId);
     response.when(success: (getGarageById) async {
+      // endTime = getGarageById.data!.endDate;
+      // startTime = getGarageById.data!.startDate;  
+      await SharedPrefHelper.setData(SharedPrefKeys.reservationtime, DateTime.now().toIso8601String());
       await confirmRerervation(true, getGarageById.data!.reservationRecordId);
       emit(AddReservationState.success(getGarageById));
     }, failure: (error) {

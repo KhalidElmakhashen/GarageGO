@@ -8,7 +8,8 @@ import 'package:legarage/features/current_page/ui/widget/nearest_way.dart';
 import 'package:legarage/features/current_page/ui/widget/spot_details_card.dart';
 
 class IsReservedTrue extends StatelessWidget {
-  const IsReservedTrue({super.key});
+  final String? time;
+  const IsReservedTrue({super.key, this.time});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class IsReservedTrue extends StatelessWidget {
             ),
 
             // Timer for Remaining Time
-            const CustomTimer(),
+             CustomTimer(time: time),
 
             //  SizedBox(
             //   height: 20.h,

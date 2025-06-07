@@ -20,15 +20,15 @@ class WidgetsInsideSlidingUpPanel extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: Colors.blue[900],
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20.r),
               topRight: Radius.circular(20.r),
             ),
-            image: const DecorationImage(
-              image: AssetImage('assets/images/seramic.jpg'),
-              fit: BoxFit.cover,
-            ),
+            // image: const DecorationImage(
+            //   image: AssetImage('assets/images/seramic.jpg'),
+            //   fit: BoxFit.cover,
+            // ),
           ),
         ),
         ListView(
@@ -83,14 +83,15 @@ class WidgetsInsideSlidingUpPanel extends StatelessWidget {
                       reservedSpots:
                           garageByIdResponse.garageData.reservedSpots,
                       rating: 4.68,
+                      price: 3.14,
                     );
                   },
                 );
                 return widget ??
                     const GarageInfoHolder(
-                      name: "Chose Garage First",
-                      address: "Chose Garage First",
-                      city: "Chose Garage First",
+                      name: "Select Garage First",
+                      address: "Select Garage First",
+                      city: "Select Garage First",
                     );
               },
             ),

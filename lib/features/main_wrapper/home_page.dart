@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:legarage/core/di/dependency_injection.dart';
 import 'package:legarage/features/current_page/ui/current_page.dart';
 import 'package:legarage/features/current_page/logic/delete_reservation_cubit/delete_reservation_cubit.dart';
-import 'package:legarage/features/explore_page/data/repo/reservation_repo.dart';
 import 'package:legarage/features/explore_page/logic/add_reservation_cubit/add_reservation_cubit.dart';
 import 'package:legarage/features/explore_page/logic/garage_by_id_cubit/garagebyid_cubit.dart';
 import 'package:legarage/features/explore_page/logic/toggle_panel_cubit/toggle_panel_cubit.dart';
@@ -13,6 +12,8 @@ import 'package:legarage/features/google_map/logic/current_position_cubit/google
 import 'package:legarage/features/google_map/logic/garages_cubit/garages_cubit.dart';
 import 'package:legarage/features/main_wrapper/widgets/nav_bar.dart';
 import 'package:legarage/features/notification/ui/notification_page.dart';
+import 'package:legarage/features/onboarding/ui/onboarding_screen.dart';
+import 'package:legarage/features/profile/logic/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:legarage/features/profile/ui/profile_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,12 +23,17 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
   PageController pageController = PageController();
   int currentPage = 0;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       // App Body
       body: PageView(
@@ -71,8 +77,12 @@ class _HomePageState extends State<HomePage> {
             ],
             child: const CurrentPage(),
           ),
-          const NotificationPage(),
-          const ProfilePage(),
+          // const NotificationPage(),
+          OnboardingScreen(),
+          BlocProvider(
+            create: (context) => getIt<GetUserDataCubit>(),
+            child: const ProfilePage(),
+          ),
         ],
       ),
 

@@ -15,7 +15,6 @@ void main() async{
   // To fix texts being hidden bug in flutter_screenutil in release mode.
   await ScreenUtil.ensureScreenSize();
   await checkIfLoggedInUser();
-  await checkIfIsReserved();
   runApp(const MyApp());
 }
 
@@ -48,19 +47,3 @@ checkIfLoggedInUser() async {
     isLoggedInUser = false;
   }
 }
-
-checkIfIsReserved() async {
-  String? reservationId =
-      await SharedPrefHelper.getString(SharedPrefKeys.reservationId);
-  if (!reservationId.isNullOrEmpty()) {
-    isReserved = true;
-  } else {
-    isReserved = false;
-  }
-  print('isReserved: $isReserved');
-  print('reservationId: $reservationId');
-}
-
-
-
-

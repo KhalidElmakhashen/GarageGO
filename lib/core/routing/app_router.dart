@@ -6,7 +6,7 @@ import 'package:legarage/features/auth/login/logic/cubit/login_cubit.dart';
 import 'package:legarage/features/auth/login/ui/login_screen.dart';
 
 import 'package:legarage/features/main_wrapper/home_page.dart';
-import 'package:legarage/features/onboarding/onboarding_screen.dart';
+import 'package:legarage/features/onboarding/ui/onboarding_screen.dart';
 import 'package:legarage/features/auth/sign_up/logic/sign_up_cubit.dart';
 import 'package:legarage/features/auth/sign_up/ui/sign_up_screen.dart';
 import 'package:legarage/features/auth/verifing_email/logic/verification_email_cubit.dart';
@@ -36,7 +36,7 @@ class AppRouter {
     switch (settings.name) {
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
-          builder: (_) => const OnboardingScreen(),
+          builder: (_) =>  OnboardingScreen(),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(

@@ -13,22 +13,22 @@ class MyNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.white,
-      decoration: const BoxDecoration(
-            // borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(
-              image: AssetImage('assets/images/seramic.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
+      color: Colors.blue[900],
+      // decoration: const BoxDecoration(
+      //       // borderRadius: BorderRadius.circular(20),
+      //       image: DecorationImage(
+      //         image: AssetImage('assets/images/seramic.jpg'),
+      //         fit: BoxFit.cover,
+      //       ),
+      //     ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 16),
         child: GNav(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.blue[900]!,
           // activeColor: Theme.of(context).colorScheme.inversePrimary,
           activeColor: Colors.white,
           // color: Theme.of(context).colorScheme.primary,
-          color: Colors.blue,
+          color: Colors.white,
           // tabBackgroundColor: Theme.of(context).colorScheme.secondary,
           tabBackgroundColor: Colors.blue,
           gap: 8,

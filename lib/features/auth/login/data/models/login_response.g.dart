@@ -24,8 +24,12 @@ Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
 
 UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
       token: json['token'] as String?,
+      userId: (json['userId'] as num?)?.toInt(),
+      reservationId: (json['reservationId'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
       'token': instance.token,
+      'userId': instance.userId,
+      'reservationId': instance.reservationId,
     };

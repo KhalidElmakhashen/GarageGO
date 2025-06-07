@@ -4,8 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:legarage/core/helpers/constants.dart';
 import 'package:legarage/core/helpers/shared_pref_helper.dart';
 import 'package:legarage/features/explore_page/logic/add_reservation_cubit/add_reservation_cubit.dart';
-import 'package:legarage/features/explore_page/ui/widgets/shimmer_effect.dart';
-
+import 'package:legarage/core/widgets/shimmer_effect.dart';
 
 class GarageInfoHolder extends StatelessWidget {
   final int? garageId;
@@ -16,10 +15,12 @@ class GarageInfoHolder extends StatelessWidget {
   final int? availableSpots;
   final int? reservedSpots;
   final double? rating;
+  final double? price;
   final bool isLoading;
 
-  Future<int> getUserId() async{
-    String userid = await SharedPrefHelper.getSecuredString(SharedPrefKeys.userId);
+  Future<int> getUserId() async {
+    String userid =
+        await SharedPrefHelper.getSecuredString(SharedPrefKeys.userId);
     return int.parse(userid);
   }
 
@@ -33,10 +34,9 @@ class GarageInfoHolder extends StatelessWidget {
     this.availableSpots,
     this.reservedSpots,
     this.rating,
+    this.price,
     this.isLoading = false,
   });
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,65 +45,106 @@ class GarageInfoHolder extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            leading: Text("Garage Name     :",style: TextStyle(fontSize: 16.h,color: Colors.black),),
-            title: isLoading ? ShimmerGarageInfo() : Text(name ?? "No Name", style: TextStyle(fontSize: 18.h,fontWeight: FontWeight.bold ,color: Colors.white)),
+            leading: Text(
+              "Garage Name     :",
+              style: TextStyle(fontSize: 16.h, color: Colors.black),
+            ),
+            title: isLoading
+                ? ShimmerEffect()
+                : Text(name ?? "No Name",
+                    style: TextStyle(
+                        fontSize: 18.h,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue[700])),
           ),
           ListTile(
-            leading: Text("Garage Address :",style: TextStyle(fontSize: 16.h,color: Colors.black),),
-            title: isLoading ? ShimmerGarageInfo() : Text(address ?? "No Address", style: TextStyle(fontSize: 18.h,fontWeight: FontWeight.bold,color: Colors.white)),
+            leading: Text(
+              "Garage Address :",
+              style: TextStyle(fontSize: 16.h, color: Colors.black),
+            ),
+            title: isLoading
+                ? ShimmerEffect()
+                : Text(address ?? "No Address",
+                    style: TextStyle(
+                        fontSize: 18.h,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue[700])),
           ),
           ListTile(
-            leading: Text("Garage City        :",style: TextStyle(fontSize: 16.h,color: Colors.black),),
-            title: isLoading ? ShimmerGarageInfo() : Text(city ?? "No City", style: TextStyle(fontSize: 18.h,fontWeight: FontWeight.bold,color: Colors.white)),
+            leading: Text(
+              "Garage City        :",
+              style: TextStyle(fontSize: 16.h, color: Colors.black),
+            ),
+            title: isLoading
+                ? ShimmerEffect()
+                : Text(city ?? "No City",
+                    style: TextStyle(
+                        fontSize: 18.h,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue[700])),
           ),
           Card(
             margin: const EdgeInsets.symmetric(vertical: 8),
             elevation: 2,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _SpotTile(label: "Total", value: totalSpots?.toString() ?? "-", color: Colors.blue),
-                  _SpotTile(label: "Available", value: availableSpots?.toString() ?? "-", color: Colors.green),
-                  _SpotTile(label: "price", value: 50.toString() ?? "-", color: Colors.red),
-                  _SpotTile(label: "rating", value: rating?.toString() ?? "-", color: Colors.yellow[700]!),
+                  _SpotTile(
+                      label: "Total",
+                      value: totalSpots?.toString() ?? "-",
+                      color: Colors.blue),
+                  _SpotTile(
+                      label: "Available",
+                      value: availableSpots?.toString() ?? "-",
+                      color: Colors.green),
+                  _SpotTile(
+                      label: "Price/H",
+                      value: price?.toString() ?? "-",
+                      color: Colors.red),
+                  _SpotTile(
+                      label: "Rating",
+                      value: rating?.toString() ?? "-",
+                      color: Colors.yellow[700]!),
                 ],
               ),
             ),
           ),
-
           SizedBox(height: 16.h),
           SizedBox(
-                width: double.infinity,
-                height: 56.h,
-                child: ElevatedButton(
-                  onPressed:  () async {
-                    int userid = await getUserId();
-                    context.read<AddReservationCubit>().addReservationRecord(userid,garageId!);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    // backgroundColor: Theme.of(context).colorScheme.primary,
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Theme.of(context).colorScheme.secondary,
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14.r),
-                      side: BorderSide(
-                        color: Theme.of(context).colorScheme.surface,
-                        width: 2.5,
-                      ),
-                    ),
-                    textStyle: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.sp,
-                      letterSpacing: 1.2,
-                    ),
+            width: double.infinity,
+            height: 56.h,
+            child: ElevatedButton(
+              onPressed: () async {
+                int userid = await getUserId();
+                context
+                    .read<AddReservationCubit>()
+                    .addReservationRecord(userid, garageId!);
+              },
+              style: ElevatedButton.styleFrom(
+                // backgroundColor: Theme.of(context).colorScheme.primary,
+                backgroundColor: Colors.blue,
+                foregroundColor: Theme.of(context).colorScheme.secondary,
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14.r),
+                  side: BorderSide(
+                    color: Theme.of(context).colorScheme.surface,
+                    width: 2.5,
                   ),
-                  child: const Text("Reserve Spot"),
+                ),
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.sp,
+                  letterSpacing: 1.2,
                 ),
               ),
+              child: const Text("Reserve Spot"),
+            ),
+          ),
         ],
       ),
     );
@@ -125,11 +166,12 @@ class _SpotTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(value, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: color)),
+        Text(value,
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 18, color: color)),
         const SizedBox(height: 4),
         Text(label, style: TextStyle(fontSize: 12, color: Colors.grey[700])),
       ],
     );
   }
 }
-

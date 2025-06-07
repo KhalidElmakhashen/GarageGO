@@ -1,8 +1,8 @@
 flutter_native_splash:
   
-  color: "#a7c7f7"
+  color: "#FFFFFF"
   # background_image: "assets/background.png"
-  image: assets/images/logo_splach.png
+  image: assets/images/ic_launcher.png
 
   # color_dark: "#042a49"
   # background_image_dark: "assets/dark-background.png"
@@ -18,12 +18,12 @@ flutter_native_splash:
 
   android_12:
 
-    image: assets/images/correct.png
-    color: "#a7c7f7"
+    image: assets/images/ic_launcher.png
+    color: "#FFFFFF"
     # icon_background_color: "#ea4335" 
 
-    image_dark: assets/images/correct.png
-    color_dark: "#00123b"
+    image_dark: assets/images/ic_launcher.png
+    color_dark: "#FFFFFF"
     # icon_background_color_dark: "#ea4335"
 
-    branding: assets/images/logo_splach.png
+    # branding: assets/images/ic_launcher.png

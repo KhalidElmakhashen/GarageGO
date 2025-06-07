@@ -11,12 +11,14 @@ class GaragebyidCubit extends Cubit<GaragebyidState> {
 
   GetGarageByIdRepo  _getGarageById;
 
+  int availableSpots = 0;
+
   Future<void> getGarageById(int id) async {
     emit(const GaragebyidState.loading());
     final response = await _getGarageById.getGarageById(id);
     response.when(success: (getGarageById) async {
-      // print("teh get garage by id is sent successfully state");
-      emit(GaragebyidState.success(getGarageById));
+        availableSpots = getGarageById.garageData!.availableSpots;
+        emit(GaragebyidState.success(getGarageById));
     }, failure: (error) {
       emit(GaragebyidState.error(error: error.apiErrorModel.message ?? ''));
     });

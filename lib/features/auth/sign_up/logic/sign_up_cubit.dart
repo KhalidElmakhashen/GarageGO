@@ -4,7 +4,6 @@ import 'package:legarage/core/helpers/constants.dart';
 import 'package:legarage/core/helpers/shared_pref_helper.dart';
 import 'package:legarage/features/auth/sign_up/data/repos/sign_up_repo.dart';
 import 'package:legarage/features/auth/sign_up/logic/sign_up_state.dart';
- 
 
 import '../data/models/sign_up_request_body.dart';
 
@@ -32,14 +31,11 @@ class SignupCubit extends Cubit<SignupState> {
       ),
     );
     response.when(success: (signupResponse) async {
-      await saveUserId(signupResponse.userData!.userId ?? 0);
+      await SharedPrefHelper.setSecuredString(
+          SharedPrefKeys.userId, signupResponse.userData!.userId.toString()); 
       emit(SignupState.signupSuccess(signupResponse));
     }, failure: (error) {
       emit(SignupState.signupError(error: error.apiErrorModel.message ?? ''));
     });
-  }
-
-   Future<void> saveUserId(int id) async {
-    await SharedPrefHelper.setSecuredString(SharedPrefKeys.userId, id.toString());
   }
 }

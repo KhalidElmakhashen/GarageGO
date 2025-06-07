@@ -20,7 +20,14 @@ class CustomExpantionTiles extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         side: const BorderSide(color: Colors.blueAccent),
       ),
-      children: [child],
+      children: [
+        Divider(
+          color: Colors.black .withOpacity(0.3),
+          thickness: 1,
+          height: 1,
+        ),
+        child
+        ],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:legarage/core/di/dependency_injection.dart';
 import 'package:legarage/features/explore_page/logic/add_reservation_cubit/add_reservation_cubit.dart';
 import 'package:legarage/features/google_map/logic/current_position_cubit/google_map_cubit.dart';
 import 'package:legarage/features/google_map/ui/main_screen_map.dart';
@@ -30,12 +31,12 @@ class _ExplorePageState extends State<ExplorePage> {
           listenWhen: (previous, current) =>  current is Loading || current is Success || current is Error,
           listener: (context, state) {
             state.whenOrNull(
-              loading: () =>  ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('loading'),
-                    backgroundColor: Colors.green,
-                  ),
-                ),
+              // loading: () =>  ScaffoldMessenger.of(context).showSnackBar(
+              //     const SnackBar(
+              //       content: Text('loading'),
+              //       backgroundColor: Colors.green,
+              //     ),
+              //   ),
                 success: (data) => ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(data.message),
@@ -86,6 +87,8 @@ class _ExplorePageState extends State<ExplorePage> {
             // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             backgroundColor: Colors.blue,
             onPressed: () {
+              // getIt.unregister<GoogleMapCubit>();
+              // getIt<GoogleMapCubit>().goToMyCurrentLocation();
               context.read<GoogleMapCubit>().goToMyCurrentLocation();
               // NOTE: This NOW has no need, but try to make the getAllGarages update UI so IT act like refresh
               // context.read<GaragesCubit>().getAllGarages();

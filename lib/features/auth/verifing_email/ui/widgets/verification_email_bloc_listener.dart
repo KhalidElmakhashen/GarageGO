@@ -67,7 +67,7 @@ class VerificationEmailBlocListener extends StatelessWidget {
                 foregroundColor: Colors.white, backgroundColor: Colors.blue, disabledForegroundColor: Colors.grey.withOpacity(0.38),
               ),
               onPressed: () {
-                context.pushNamed(Routes.loginScreen);
+                context.pushNamed(Routes.onBoardingScreen);
               },
               child: const Text('Continue'),
             ),
