@@ -47,7 +47,7 @@ class GarageInfoHolder extends StatelessWidget {
           ListTile(
             leading: Text(
               "Garage Name     :",
-              style: TextStyle(fontSize: 16.h, color: Colors.black),
+              style: TextStyle(fontSize: 16.h, color: const Color(0xFF1F3171),fontWeight: FontWeight.bold),
             ),
             title: isLoading
                 ? ShimmerEffect()
@@ -55,12 +55,12 @@ class GarageInfoHolder extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 18.h,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue[700])),
+                        color: Colors.grey[500])),
           ),
           ListTile(
             leading: Text(
               "Garage Address :",
-              style: TextStyle(fontSize: 16.h, color: Colors.black),
+              style: TextStyle(fontSize: 16.h,  color: const Color(0xFF1F3171),fontWeight: FontWeight.bold),
             ),
             title: isLoading
                 ? ShimmerEffect()
@@ -68,12 +68,12 @@ class GarageInfoHolder extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 18.h,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue[700])),
+                        color: Colors.grey[500])),
           ),
           ListTile(
             leading: Text(
               "Garage City        :",
-              style: TextStyle(fontSize: 16.h, color: Colors.black),
+              style: TextStyle(fontSize: 16.h, color: const Color(0xFF1F3171),fontWeight: FontWeight.bold),
             ),
             title: isLoading
                 ? ShimmerEffect()
@@ -81,7 +81,7 @@ class GarageInfoHolder extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 18.h,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue[700])),
+                        color: Colors.grey[500])),
           ),
           Card(
             margin: const EdgeInsets.symmetric(vertical: 8),
@@ -126,7 +126,7 @@ class GarageInfoHolder extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 // backgroundColor: Theme.of(context).colorScheme.primary,
-                backgroundColor: Colors.blue,
+                backgroundColor: const Color(0xFF1F3171),
                 foregroundColor: Theme.of(context).colorScheme.secondary,
                 elevation: 4,
                 shape: RoundedRectangleBorder(

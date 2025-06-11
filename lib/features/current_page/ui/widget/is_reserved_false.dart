@@ -16,7 +16,8 @@ class IsReservedFalse extends StatelessWidget {
           'there is no reserved spot\n please reserve one first',
           style: TextStyle(
             fontSize: 20,
-            color: Colors.white,
+            color: Color(0xFF1F3171),
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

@@ -9,7 +9,12 @@ class CustomExpantionTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: Text(title),
+      title: Text(title,
+          style: TextStyle(
+            color: Color(0xFF1F3171),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          )),
       backgroundColor: Colors.white,
       collapsedBackgroundColor: Colors.white,
       collapsedShape: RoundedRectangleBorder(

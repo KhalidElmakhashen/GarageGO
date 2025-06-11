@@ -6,6 +6,7 @@ import 'package:legarage/features/auth/login/logic/cubit/login_cubit.dart';
 import 'package:legarage/features/auth/login/ui/login_screen.dart';
 
 import 'package:legarage/features/main_wrapper/home_page.dart';
+import 'package:legarage/features/onboarding/logic/cubit/complete_setup_cubit.dart';
 import 'package:legarage/features/onboarding/ui/onboarding_screen.dart';
 import 'package:legarage/features/auth/sign_up/logic/sign_up_cubit.dart';
 import 'package:legarage/features/auth/sign_up/ui/sign_up_screen.dart';
@@ -20,15 +21,14 @@ import 'package:legarage/features/auth/verifing_email/ui/verifing_email_screen.d
 //       case ('register'):
 //         return MaterialPageRoute(builder: (_) => RegisterPage());
 //       case ('homePage'):
-//         return MaterialPageRoute(builder: (_) => HomePage()); 
+//         return MaterialPageRoute(builder: (_) => HomePage());
 //     }
 //     return null;
 //   }
 // }
 
-
 class AppRouter {
-   static Route? generateRoute(RouteSettings settings) {
+  static Route? generateRoute(RouteSettings settings) {
     //this arguments to be passed in any screen like this ( arguments as ClassName )
     // ignore: unused_local_variable
     final arguments = settings.arguments;
@@ -36,7 +36,10 @@ class AppRouter {
     switch (settings.name) {
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
-          builder: (_) =>  OnboardingScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<CompleteSetupCubit>(),
+            child: OnboardingScreen(),
+          ),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
@@ -61,7 +64,7 @@ class AppRouter {
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) =>  HomePage(),
+          builder: (_) => HomePage(),
         );
       default:
         return null;

@@ -14,14 +14,14 @@ class NotificationPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Notifications',
-          style: TextStyle(color: Theme.of(context).colorScheme.surface),
+          style: TextStyle(color: Color(0xFF1F3171) ),
         ),
         backgroundColor: Colors.transparent,
       ),
       body: const Stack(
         children: [
           ImageBackGroundContainer(imagePath: 
-            'assets/images/2522356.jpg',
+            'assets/images/blue_gradiant_background.png',
           ),
         ],
       ),

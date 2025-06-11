@@ -12,7 +12,11 @@ import 'package:legarage/features/explore_page/logic/add_reservation_cubit/add_r
 import 'package:legarage/features/explore_page/logic/garage_by_id_cubit/garagebyid_cubit.dart';
 import 'package:legarage/features/google_map/data/repo/get_all_garages_repo.dart';
 import 'package:legarage/features/google_map/logic/garages_cubit/garages_cubit.dart';
+import 'package:legarage/features/onboarding/data/repo/add_new_car_repo.dart';
+import 'package:legarage/features/onboarding/logic/cubit/complete_setup_cubit.dart';
+import 'package:legarage/features/profile/data/repo/get_cars_repo.dart';
 import 'package:legarage/features/profile/data/repo/get_user_data_repo.dart';
+import 'package:legarage/features/profile/logic/get_cars_cubit/get_cars_cubit.dart';
 import 'package:legarage/features/profile/logic/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:legarage/features/profile/ui/profile_page.dart';
 import '../../features/auth/login/data/repos/login_repo.dart';
@@ -60,9 +64,12 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<GetUserDataCubit>(() => GetUserDataCubit(getIt()));
 
   // add new car
-  getIt.registerLazySingleton<GetUserDataRepo>(() => GetUserDataRepo(getIt()));
-  getIt.registerFactory<GetUserDataCubit>(() => GetUserDataCubit(getIt()));
+  getIt.registerLazySingleton<AddNewCarRepo>(() => AddNewCarRepo(getIt()));
+  getIt.registerLazySingleton<CompleteSetupCubit>(() => CompleteSetupCubit(getIt()));
 
+  // get cars by user id
+  getIt.registerLazySingleton<GetCarsRepo>(() => GetCarsRepo(getIt()));
+  getIt.registerFactory<GetCarsCubit>(() => GetCarsCubit(getIt()));
   
   
   // getIt.registerLazySingleton<UpdateAvailableSpotsCubit>(() => UpdateAvailableSpotsCubit(getIt()));

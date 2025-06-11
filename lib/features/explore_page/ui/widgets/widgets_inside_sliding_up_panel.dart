@@ -20,7 +20,7 @@ class WidgetsInsideSlidingUpPanel extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              color: Colors.blue[900],
+              color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20.r),
               topRight: Radius.circular(20.r),

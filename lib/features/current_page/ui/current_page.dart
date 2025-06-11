@@ -69,7 +69,7 @@ class _CurrentPageState extends State<CurrentPage> {
       appBar: AppBar(
         title: const Text(
           'Spot Detials',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Color(0xFF1F3171)),
         ),
         backgroundColor: Colors.transparent,
       ),
@@ -77,7 +77,7 @@ class _CurrentPageState extends State<CurrentPage> {
         children: [
           const CurrentPageListner(),
           const ImageBackGroundContainer(
-            imagePath: 'assets/images/2522356.jpg',
+            imagePath: 'assets/images/blue_gradiant_background.png',
           ),
           isReserved ?  IsReservedTrue(time: time ,) : const IsReservedFalse(),
         ],

@@ -5,6 +5,7 @@ import 'package:legarage/core/helpers/extensions.dart';
 import 'package:legarage/core/helpers/shared_pref_helper.dart';
 import 'package:legarage/core/routing/routes.dart';
 import 'package:legarage/core/widgets/image_back_ground_container.dart';
+import 'package:legarage/features/profile/logic/get_cars_cubit/get_cars_cubit.dart';
 import 'package:legarage/features/profile/logic/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:legarage/features/profile/ui/widgets/profile_page_lisnter.dart';
 
@@ -25,8 +26,10 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    getUserId().then((userid) =>
-        context.read<GetUserDataCubit>().getUserData(userid).whenComplete(() {}));
+    getUserId().then((userid) {
+        context.read<GetUserDataCubit>().getUserData(userid).whenComplete(() {});
+        context.read<GetCarsCubit>().getCars(userid).whenComplete(() {});
+    });
   }
 
   @override
@@ -47,12 +50,12 @@ class _ProfilePageState extends State<ProfilePage> {
               },
               icon: Icon(
                 Icons.logout_sharp,
-                color: Theme.of(context).colorScheme.surface,
+                color: Color(0xFF1F3171),
               ))
         ],
         title: const Text(
           'Profile Page',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color:Color(0xFF1F3171)),
         ),
         backgroundColor: Colors.transparent,
       ),
@@ -61,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body:  const Stack(
         children: [
            ImageBackGroundContainer(
-            imagePath: 'assets/images/2522356.jpg',
+            imagePath: 'assets/images/blue_gradiant_background.png',
           ),
           SingleChildScrollView(
             child: Padding(

@@ -29,7 +29,7 @@ class CurrentCostCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '50.23💲',
+                  '50.23 E\u00A3',
                   style: TextStyle(
                     fontSize: 20,
                     color: Theme.of(context).colorScheme.inversePrimary,
@@ -45,7 +45,10 @@ class CurrentCostCard extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue[200],
+                  backgroundColor: const Color(0xFF1F3171),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
                 onPressed: () async {
                   String savedReservationId = await SharedPrefHelper.getString(SharedPrefKeys.reservationId); 
@@ -57,7 +60,7 @@ class CurrentCostCard extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Theme.of(context).colorScheme.inversePrimary,
+                    color: Colors.white,
                   ),
                 ),
               ),

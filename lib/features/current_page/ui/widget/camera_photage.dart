@@ -16,7 +16,8 @@ class _CameraPhotageState extends State<CameraPhotage> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.cyan[50],
+      // color: Colors.cyan[50],
+      color:  Color(0xff1F3171),
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(15),
@@ -28,7 +29,7 @@ class _CameraPhotageState extends State<CameraPhotage> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.primary,
+                color: Colors.white,
               ),
             ),
             const SizedBox(

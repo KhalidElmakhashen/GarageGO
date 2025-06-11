@@ -10,13 +10,15 @@ class AddNewCarResponse {
   final String? plateNumber;
   final String? model;
   final String? type;
-  final String? userId;
+  final int? userId;
+  final int? carId;
 
   AddNewCarResponse({
     this.plateNumber,
     this.model,
     this.type,
     this.userId,
+    this.carId,
   });
 
   factory AddNewCarResponse.fromJson(Map<String, dynamic> json) =>

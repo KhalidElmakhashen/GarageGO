@@ -7,7 +7,7 @@ class AddNewCarRequest {
   final String? plateNumber;
   final String? model;
   final String? type;
-  final String? userId;
+  final int? userId;
 
   AddNewCarRequest({
     this.plateNumber,

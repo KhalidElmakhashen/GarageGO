@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:legarage/core/helpers/extensions.dart';
-import 'package:legarage/core/routing/routes.dart';
+import 'package:legarage/core/helpers/constants.dart';
+import 'package:legarage/core/helpers/shared_pref_helper.dart';
+import 'package:legarage/features/onboarding/logic/cubit/complete_setup_cubit.dart';
 
 class Step4Content extends StatelessWidget {
   const Step4Content({super.key});
@@ -25,8 +27,11 @@ class Step4Content extends StatelessWidget {
         SizedBox(height: 20.h),
         Center(
           child: ElevatedButton.icon(
-            onPressed: () {
-              context.pushReplacementNamed(Routes.loginScreen);
+            onPressed: () async {
+              String userIdString = await SharedPrefHelper.getSecuredString(SharedPrefKeys.userId);
+              int userId = int.parse(userIdString);
+              // getIt<CompleteSetupCubit>().addNewCar(userId);
+              context.read<CompleteSetupCubit>().addNewCar(userId);
             },
             icon: Icon(Icons.check_circle, color: Colors.white),
             label: Text(

@@ -15,6 +15,7 @@ class ApiConstants {
   static const String deleteReservationRecord = "ReservationRecords/Delete/{id}";
   static const String getUserById = "Users/getUserById/{id}";
   static const String addNewCar = "Cars/AddNewCar";
+  static const String getCarByUserId = "Cars/GetCarsByUserId/{userId}";
 
   
 }

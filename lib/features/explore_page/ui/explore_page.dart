@@ -85,7 +85,7 @@ class _ExplorePageState extends State<ExplorePage> {
           bottom: fabHeight,
           child: FloatingActionButton(
             // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            backgroundColor: Colors.blue,
+            backgroundColor: Color(0xFF1F3171),
             onPressed: () {
               // getIt.unregister<GoogleMapCubit>();
               // getIt<GoogleMapCubit>().goToMyCurrentLocation();

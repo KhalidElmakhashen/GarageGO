@@ -11,7 +11,8 @@ AddNewCarResponse _$AddNewCarResponseFromJson(Map<String, dynamic> json) =>
       plateNumber: json['plateNumber'] as String?,
       model: json['model'] as String?,
       type: json['type'] as String?,
-      userId: json['userId'] as String?,
+      userId: (json['userId'] as num?)?.toInt(),
+      carId: (json['carId'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$AddNewCarResponseToJson(AddNewCarResponse instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$AddNewCarResponseToJson(AddNewCarResponse instance) =>
       'model': instance.model,
       'type': instance.type,
       'userId': instance.userId,
+      'carId': instance.carId,
     };

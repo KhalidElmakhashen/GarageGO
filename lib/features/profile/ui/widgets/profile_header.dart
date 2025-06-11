@@ -65,7 +65,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                       style: TextStyle(
                           fontSize: 20.h,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: Color(0xFF1F3171)),
                     ),
               verticalSpace(15),
               widget.email == null
@@ -75,7 +75,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                       style: TextStyle(
                         fontSize: 16.h,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Color(0xFF1F3171)   ,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),

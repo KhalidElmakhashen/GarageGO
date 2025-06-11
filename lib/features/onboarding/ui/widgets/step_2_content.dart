@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:legarage/core/di/dependency_injection.dart';
+import 'package:legarage/features/onboarding/logic/cubit/complete_setup_cubit.dart';
 
 class Step2Content extends StatelessWidget {
    Step2Content({super.key});
 
-    // Controllers for car info fields
-  final TextEditingController carModelController = TextEditingController();
-  final TextEditingController plateNumberController = TextEditingController();
-  final TextEditingController carTypeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class Step2Content extends StatelessWidget {
             ),
             SizedBox(height: 16.h),
             TextField(
-              controller: carModelController,
+              controller: getIt<CompleteSetupCubit>().carModelController,
               decoration: InputDecoration(
                 labelText: 'Car Model',
                 border: OutlineInputBorder(
@@ -29,7 +27,7 @@ class Step2Content extends StatelessWidget {
             ),
             SizedBox(height: 12.h),
             TextField(
-              controller: plateNumberController,
+              controller: getIt<CompleteSetupCubit>().plateNumberController,
               decoration: InputDecoration(
                 labelText: 'Plate Number',
                 border: OutlineInputBorder(
@@ -38,7 +36,7 @@ class Step2Content extends StatelessWidget {
             ),
             SizedBox(height: 12.h),
             TextField(
-              controller: carTypeController,
+              controller: getIt<CompleteSetupCubit>().carTypeController,  
               decoration: InputDecoration(
                 labelText: 'Car Type',
                 border: OutlineInputBorder(

@@ -1,4 +1,4 @@
-
+  
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'get_garage_by_id_response_body.g.dart';

@@ -11,6 +11,7 @@ import 'package:legarage/features/explore_page/data/models/reserve_response.dart
 import 'package:legarage/features/google_map/data/models/get_all_garages_response_body.dart';
 import 'package:legarage/features/onboarding/data/models/add_new_car_request.dart';
 import 'package:legarage/features/onboarding/data/models/add_new_car_response.dart';
+import 'package:legarage/features/profile/data/models/get_cars_response.dart';
 import 'package:legarage/features/profile/data/models/get_user_data_response.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../features/auth/sign_up/data/models/sign_up_request_body.dart';
@@ -63,6 +64,11 @@ abstract class ApiService {
   @POST(ApiConstants.addNewCar)
   Future<AddNewCarResponse> addNewCar(
     @Body() AddNewCarRequest carData,
+  );
+
+  @GET(ApiConstants.getCarByUserId)
+  Future<GetCarsResponse> getCarByUserId(
+    @Path('userId') int userId,
   );
 
 }

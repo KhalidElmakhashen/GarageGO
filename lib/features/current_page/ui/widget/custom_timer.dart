@@ -34,7 +34,7 @@ class CustomTimer extends StatelessWidget {
               "Remaining Time ",
               style: TextStyle(
                 // color: Theme.of(context).colorScheme.inversePrimary,
-                color: Colors.blue,
+                color: Color(0xFF1F3171),
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -47,7 +47,7 @@ class CustomTimer extends StatelessWidget {
               showZeroValue: true,
               style: const TextStyle(
                   fontSize: 50,
-                  color: Colors.blue,
+                  color: Color(0xFF1F3171),
                   // color: Theme.of(context).colorScheme.inversePrimary
                   ),
               separatorStyle: TextStyle(
@@ -56,7 +56,7 @@ class CustomTimer extends StatelessWidget {
                   fontSize: 45),
               decoration: BoxDecoration(
                 // color: Theme.of(context).colorScheme.surface,
-                color: Colors.teal[50]  ,
+                color: Colors.blue[50]  ,
                 borderRadius: BorderRadius.circular(13),
               ),
             ),
