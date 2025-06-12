@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:legarage/core/helpers/constants.dart';
 import 'package:legarage/core/helpers/shared_pref_helper.dart';
-import 'package:legarage/features/onboarding/logic/cubit/complete_setup_cubit.dart';
+import 'package:legarage/features/onboarding/logic/complete_setup_cubit/complete_setup_cubit.dart';
 
 class Step4Content extends StatelessWidget {
   const Step4Content({super.key});

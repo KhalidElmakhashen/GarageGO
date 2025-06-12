@@ -8,9 +8,11 @@ part of 'get_cars_response.dart';
 
 GetCarsResponse _$GetCarsResponseFromJson(Map<String, dynamic> json) =>
     GetCarsResponse(
-      status: json['status'] as String,
-      message: json['message'] as String,
-      cars: Car.fromJson(json['data'] as Map<String, dynamic>),
+      status: json['status'] as bool?,
+      message: json['message'] as String?,
+      cars: json['data'] == null
+          ? null
+          : Car.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$GetCarsResponseToJson(GetCarsResponse instance) =>
@@ -21,12 +23,12 @@ Map<String, dynamic> _$GetCarsResponseToJson(GetCarsResponse instance) =>
     };
 
 Car _$CarFromJson(Map<String, dynamic> json) => Car(
-      carId: (json['carId'] as num).toInt(),
-      plateNumber: json['plateNumber'] as String,
-      model: json['model'] as String,
-      type: json['type'] as String,
-      userId: json['userId'] as String,
-      spotId: json['spotId'] as String,
+      carId: (json['carId'] as num?)?.toInt(),
+      plateNumber: json['plateNumber'] as String?,
+      model: json['model'] as String?,
+      type: json['type'] as String?,
+      userId: (json['userId'] as num?)?.toInt(),
+      spotId: (json['spotId'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{

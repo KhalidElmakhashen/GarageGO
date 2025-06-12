@@ -4,7 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:legarage/features/onboarding/logic/func/create_image_path.dart';
+
 
 class Step3Content extends StatefulWidget {
    Step3Content({super.key});
@@ -16,17 +17,7 @@ class Step3Content extends StatefulWidget {
 class _Step3ContentState extends State<Step3Content> {
   File? _profileImage;
 
-  Future<void> createImagePath(String pickedFilePath) async {
-    var directory = await getApplicationDocumentsDirectory();
-    String imagePath = '${directory.path}/profile_image.png';
-    final imageFile = File(pickedFilePath);
-    final savedImage = await imageFile.copy(imagePath);
-
-    // File profileImage = File(imagePath);
-    //  = imageFile.copy(profileImage);
-  }
-
-  Future<void> _pickProfileImage() async {
+  Future<void> pickProfileImage() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
@@ -49,7 +40,7 @@ class _Step3ContentState extends State<Step3Content> {
             SizedBox(height: 16.h),
             Center(
               child: GestureDetector(
-                onTap: _pickProfileImage,
+                onTap: pickProfileImage,
                 child: CircleAvatar(
                   radius: 50,
                   backgroundColor: Colors.grey[300],

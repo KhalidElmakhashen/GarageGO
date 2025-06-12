@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:legarage/core/helpers/extensions.dart';
 import 'package:legarage/core/routing/routes.dart';
 import 'package:legarage/core/theming/colors.dart';
-import 'package:legarage/features/onboarding/logic/cubit/complete_setup_cubit.dart';
+import 'package:legarage/features/onboarding/logic/complete_setup_cubit/complete_setup_cubit.dart';
 
 
 class CompleteSetupListner extends StatelessWidget {

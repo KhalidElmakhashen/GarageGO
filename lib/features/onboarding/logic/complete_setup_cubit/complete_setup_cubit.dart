@@ -25,9 +25,6 @@ class CompleteSetupCubit extends Cubit<CompleteSetupState> {
         plateNumber: plateNumberController.text,
         model: carModelController.text,
         type: carTypeController.text,
-        // plateNumber: "vr-1234",
-        // model: 'Toyota',
-        // type: 'Sedan',
         userId: userId
       )
     );

@@ -6,10 +6,10 @@ part 'get_cars_response.g.dart';
 
 @JsonSerializable()
 class GetCarsResponse {
-  final String status;
-  final String message;
+  final bool? status;
+  final String? message;
   @JsonKey(name: 'data')
-  final  Car cars;
+  final  Car? cars;
   GetCarsResponse({
     required this.status,
     required this.message,
@@ -27,12 +27,12 @@ class GetCarsResponse {
 
 @JsonSerializable()
 class Car {
-  final int carId;
-  final String plateNumber;
-  final String model;
-  final String type;
-  final String userId;
-  final String spotId;
+  final int? carId;
+  final String? plateNumber;
+  final String? model;
+  final String? type;
+  final int? userId;
+  final int? spotId;
 
   Car({
     required this.carId,

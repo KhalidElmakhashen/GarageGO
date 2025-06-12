@@ -46,8 +46,7 @@ class _InfoHolderState extends State<InfoHolder> {
   @override
   void initState() {
     super.initState();
-    // Call getCars once when the widget is first built
-    getIt<GetCarsCubit>().getCars(25);
+    // Removed duplicate getCars call
   }
 
   @override
@@ -74,9 +73,17 @@ class _InfoHolderState extends State<InfoHolder> {
 
         // card info card
         verticalSpace(10),
+        // CustomExpantionTiles(
+        //           title: "Car Info",
+        //           child: CarInfoCard(
+        //             carModel: widget.carModel,
+        //             plateNumber: widget.plateNumber,
+        //             carType: widget.carType,
+        //           ),
+        //         ),
         BlocBuilder<GetCarsCubit, GetCarsState>(
           buildWhen: (previous, current) =>
-              previous != current &&
+              // previous != current &&
               current is Loading || current is Error || current is Success,
           builder: (context, state) {
             final widget = state.whenOrNull(

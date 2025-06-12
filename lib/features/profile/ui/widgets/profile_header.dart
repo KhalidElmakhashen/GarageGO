@@ -3,8 +3,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:legarage/core/helpers/spacing.dart';
 import 'package:legarage/core/widgets/shimmer_effect.dart';
+import 'package:legarage/features/onboarding/logic/func/create_image_path.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ProfileHeader extends StatefulWidget {
@@ -26,33 +28,54 @@ class ProfileHeader extends StatefulWidget {
 }
 
 class _ProfileHeaderState extends State<ProfileHeader> {
-  String imagePath = "assets/images/profile_image.png";
+  late String imagePath;
+  File? profileImage;
 
-  Future<void> getImagePath() async {
-    var directory = await getApplicationDocumentsDirectory();
+  @override
+  void initState() {
+    super.initState();
+    _initImagePath();
+  }
+
+  Future<void> _initImagePath() async {
+    final directory = await getApplicationDocumentsDirectory();
     imagePath = '${directory.path}/profile_image.png';
-    setState(() {}); // Replace with actual image path
+    final imageFile = File(imagePath);
+    if (await imageFile.exists()) {
+      setState(() {
+        profileImage = imageFile;
+      });
+    }
+  }
+
+  Future<void> pickProfileImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      await createImagePath(pickedFile.path); // copy picked image to imagePath
+      setState(() {
+        profileImage = File(pickedFile.path); // update new image
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    getImagePath();
-    final profileImage = File(imagePath);
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CircleAvatar(
-          radius: 55,
-          backgroundColor: Colors.grey[300],
-          backgroundImage:
-              profileImage.existsSync() ? FileImage(profileImage) : null,
-          child: profileImage.existsSync()
-              ? null
-              : Icon(Icons.camera_alt, size: 40, color: Colors.grey[700]),
+        GestureDetector(
+          onDoubleTap: pickProfileImage,
+          child: CircleAvatar(
+            radius: 55,
+            backgroundColor: Colors.grey[300],
+            backgroundImage: profileImage != null ? FileImage(profileImage!) : null,
+            child: profileImage == null
+                ? Icon(Icons.camera_alt, size: 40, color: Colors.grey[700])
+                : null,
+          ),
         ),
-        const SizedBox(
-          width: 18,
-        ),
+        const SizedBox(width: 30),
         Container(
           width: MediaQuery.of(context).size.width * 0.6,
           child: Column(
@@ -63,9 +86,10 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                   : Text(
                       widget.firstName ?? "Some On Name",
                       style: TextStyle(
-                          fontSize: 20.h,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF1F3171)),
+                        fontSize: 20.h,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF1F3171),
+                      ),
                     ),
               verticalSpace(15),
               widget.email == null
@@ -75,7 +99,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                       style: TextStyle(
                         fontSize: 16.h,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF1F3171)   ,
+                        color: Color(0xFF1F3171),
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),

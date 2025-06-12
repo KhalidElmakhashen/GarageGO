@@ -12,6 +12,7 @@ import 'package:legarage/features/google_map/logic/current_position_cubit/google
 import 'package:legarage/features/google_map/logic/garages_cubit/garages_cubit.dart';
 import 'package:legarage/features/main_wrapper/widgets/nav_bar.dart';
 import 'package:legarage/features/notification/ui/notification_page.dart';
+import 'package:legarage/features/onboarding/ui/onboarding_screen.dart';
 import 'package:legarage/features/profile/logic/get_cars_cubit/get_cars_cubit.dart';
 import 'package:legarage/features/profile/logic/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:legarage/features/profile/ui/profile_page.dart';
@@ -77,7 +78,8 @@ class _HomePageState extends State<HomePage>
             ],
             child: const CurrentPage(),
           ),
-          const NotificationPage(),
+          // const NotificationPage(),
+          OnboardingScreen(),
           MultiBlocProvider(
             providers: [
               BlocProvider(

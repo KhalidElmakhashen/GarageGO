@@ -6,7 +6,7 @@ import 'package:legarage/features/auth/login/logic/cubit/login_cubit.dart';
 import 'package:legarage/features/auth/login/ui/login_screen.dart';
 
 import 'package:legarage/features/main_wrapper/home_page.dart';
-import 'package:legarage/features/onboarding/logic/cubit/complete_setup_cubit.dart';
+import 'package:legarage/features/onboarding/logic/complete_setup_cubit/complete_setup_cubit.dart';
 import 'package:legarage/features/onboarding/ui/onboarding_screen.dart';
 import 'package:legarage/features/auth/sign_up/logic/sign_up_cubit.dart';
 import 'package:legarage/features/auth/sign_up/ui/sign_up_screen.dart';

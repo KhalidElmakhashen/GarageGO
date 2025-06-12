@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:legarage/core/di/dependency_injection.dart';
-import 'package:legarage/features/onboarding/logic/cubit/complete_setup_cubit.dart';
+import 'package:legarage/features/onboarding/logic/complete_setup_cubit/complete_setup_cubit.dart';
 
 class Step2Content extends StatelessWidget {
    Step2Content({super.key});
