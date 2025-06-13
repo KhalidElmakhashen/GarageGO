@@ -78,8 +78,8 @@ class _HomePageState extends State<HomePage>
             ],
             child: const CurrentPage(),
           ),
-          // const NotificationPage(),
-          OnboardingScreen(),
+          const NotificationPage(),
+          // OnboardingScreen(),
           MultiBlocProvider(
             providers: [
               BlocProvider(

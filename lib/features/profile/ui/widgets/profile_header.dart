@@ -75,7 +75,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                 : null,
           ),
         ),
-        const SizedBox(width: 30),
+        const SizedBox(width: 18),
         Container(
           width: MediaQuery.of(context).size.width * 0.6,
           child: Column(

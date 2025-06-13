@@ -6,7 +6,7 @@ class ApiConstants {
 
 
 
-  static const String login = "auth/login";
+  static const String login = "Auth/login";
   static const String signup = "Auth/Register";
   static const String verifyEmail = "Auth/VerifyEmail";
   static const String getAllGarages = "Garages/GetAllGarages";

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:legarage/core/helpers/constants.dart';
+import 'package:legarage/core/helpers/shared_pref_helper.dart';
+import 'package:legarage/features/current_page/logic/delete_reservation_cubit/delete_reservation_cubit.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 
 class CustomTimer extends StatelessWidget {
@@ -45,6 +49,11 @@ class CustomTimer extends StatelessWidget {
             SlideCountdownSeparated(
               duration: parseDuration(time ?? '00:00:00'),
               showZeroValue: true,
+              onDone: () async {
+                  String savedReservationId = await SharedPrefHelper.getString(SharedPrefKeys.reservationId); 
+                  int reservationId = int.parse(savedReservationId);
+                  context.read<DeleteReservationCubit>().deleteReservation(reservationId);
+                },
               style: const TextStyle(
                   fontSize: 50,
                   color: Color(0xFF1F3171),
