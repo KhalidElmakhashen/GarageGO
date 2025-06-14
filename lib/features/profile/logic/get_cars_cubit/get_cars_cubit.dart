@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:legarage/core/helpers/constants.dart';
+import 'package:legarage/core/helpers/shared_pref_helper.dart';
 import 'package:legarage/features/profile/data/repo/get_cars_repo.dart';
 
 part 'get_cars_state.dart';
@@ -13,7 +15,8 @@ class GetCarsCubit extends Cubit<GetCarsState> {
     emit(const GetCarsState.loading());
     final response = await _getCarsRepo.getCars(userId);
     response.when(
-      success: (data) {
+      success: (data) async {
+         await SharedPrefHelper.setData(SharedPrefKeys.vichelType, data.cars!.model);
         emit(GetCarsState.success(data));
       },
       failure: (error) {

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:legarage/core/networking/api_service.dart';
 import 'package:legarage/core/networking/dio_factory.dart';
+import 'package:legarage/core/services/notification_service.dart';
 import 'package:legarage/features/auth/verifing_email/data/repo/verifiy_repo.dart';
 import 'package:legarage/features/auth/verifing_email/logic/verification_email_cubit.dart';
 import 'package:legarage/features/current_page/data/repo/delete_reservation_repo.dart';
@@ -70,6 +71,12 @@ Future<void> setupGetIt() async {
   // get cars by user id
   getIt.registerLazySingleton<GetCarsRepo>(() => GetCarsRepo(getIt()));
   getIt.registerFactory<GetCarsCubit>(() => GetCarsCubit(getIt()));
+
+  // notification service
+  getIt.registerLazySingleton<NotificationService>(() => NotificationService());
+
+  
+
   
   
   // getIt.registerLazySingleton<UpdateAvailableSpotsCubit>(() => UpdateAvailableSpotsCubit(getIt()));

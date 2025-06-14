@@ -83,7 +83,7 @@ class WidgetsInsideSlidingUpPanel extends StatelessWidget {
                       reservedSpots:
                           garageByIdResponse.garageData.reservedSpots,
                       rating: 4.68,
-                      price: 3.14,
+                      price: 15,
                     );
                   },
                 );

@@ -48,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   predicate: (Route<dynamic> route) => false,
                 );
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.logout_sharp,
                 color: Color(0xFF1F3171),
               ))

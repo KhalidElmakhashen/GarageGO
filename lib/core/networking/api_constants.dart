@@ -3,6 +3,7 @@ class ApiConstants {
   static const String apiBaseUrl = "https://ispot.runasp.net/api/";
   // static const String apiBaseUrl = "http://192.168.43.13:5158/api/";  // local with internet
   // static const String apiBaseUrl = "http://192.168.0.109:5158/api/";  // local with internet
+  // static const String apiBaseUrl = "http://192.168.1.7:5158/api/";  // local with internet
 
 
 

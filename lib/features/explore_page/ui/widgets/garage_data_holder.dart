@@ -102,7 +102,7 @@ class GarageInfoHolder extends StatelessWidget {
                       value: availableSpots?.toString() ?? "-",
                       color: Colors.green),
                   _SpotTile(
-                      label: "Price/H",
+                      label: "E\u00A3/H",
                       value: price?.toString() ?? "-",
                       color: Colors.red),
                   _SpotTile(

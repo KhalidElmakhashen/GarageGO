@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:legarage/core/models/notification_model.dart';
+import 'package:legarage/core/services/notification_service.dart';
 import 'package:legarage/core/widgets/image_back_ground_container.dart';
-import 'package:legarage/main.dart';
+import 'package:legarage/features/notification/ui/widgets/notification_tiles.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});
-
-  // make list that contain NotificationTiles and use it in the ListView.builder and when delete from the list setState to update the UI and every time you get new notification add it to the list and setState to update the UI
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+
+      // appBar
       appBar: AppBar(
         title: const Text(
           'Notifications',
@@ -21,30 +21,34 @@ class NotificationPage extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
       ),
-      body:  Stack(
+
+      // body
+      body: Stack(
         children: [
           const ImageBackGroundContainer(
             imagePath: 'assets/images/blue_gradiant_background.png',
           ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+            child: NotificationTiles(),
+          ),
           Positioned(
+            right: 8,
             bottom: 10,
             child: ElevatedButton(
-              onPressed: () => showNotification("hello!", "this is local notification"),
-              child: const Text("Show Notification"),
+              onPressed: () async {
+                var box = Hive.box<NotificationModel>('notifications');
+                await box.clear(); // Removes all entries
+              },
+              child: const Text(
+                "Delete All",
+                style: TextStyle(
+                    color: Color(0xFF1F3171), fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ],
       ),
-      // body: ListView.builder(
-      //   itemCount: 20,
-      //   itemBuilder: (context, index) {
-      //     return NotificationTiles(
-      //       title: "Ramadan Kareem",
-      //       leading: index + 1,
-      //       color: index % 2 == 0 ? Theme.of(context).colorScheme.inversePrimary : Theme.of(context).colorScheme.primary,
-      //     );
-      //   },
-      // ),
     );
   }
 }

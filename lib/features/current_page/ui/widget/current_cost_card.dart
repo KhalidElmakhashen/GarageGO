@@ -5,7 +5,9 @@ import 'package:legarage/core/helpers/shared_pref_helper.dart';
 import 'package:legarage/features/current_page/logic/delete_reservation_cubit/delete_reservation_cubit.dart';
 
 class CurrentCostCard extends StatelessWidget {
-  const CurrentCostCard({super.key});
+
+  dynamic spot;
+  CurrentCostCard({required this.spot,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +40,14 @@ class CurrentCostCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 6,
-            ),
-             SizedBox(
+
+            spot != null ? const SizedBox() :
+            Column(
+              children: [
+                const SizedBox(
+                  height: 6,
+                ),
+                SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -55,7 +61,7 @@ class CurrentCostCard extends StatelessWidget {
                   int reservationId = int.parse(savedReservationId);
                   context.read<DeleteReservationCubit>().deleteReservation(reservationId);
                 },
-                child: Text(
+                child: const Text(
                   'End Reservation',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -65,6 +71,9 @@ class CurrentCostCard extends StatelessWidget {
                 ),
               ),
             ),
+              ],
+            ),
+             
           ],
         ),
       ),

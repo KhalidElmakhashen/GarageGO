@@ -2,7 +2,7 @@ import 'package:signalr_netcore/http_connection_options.dart';
 import 'package:signalr_netcore/hub_connection.dart';
 import 'package:signalr_netcore/hub_connection_builder.dart';
 
-class SingalRService {
+class SingalRServicedubpricated {
   late HubConnection _connection;
 
   Future<void> startSignalRConnection() async {
