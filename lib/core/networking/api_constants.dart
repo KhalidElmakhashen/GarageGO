@@ -1,9 +1,9 @@
 class ApiConstants {
   // static const String apiBaseUrl = "https://e8b3-197-63-172-54.ngrok-free.app/api/";
-  static const String apiBaseUrl = "https://ispot.runasp.net/api/";
+  // static const String apiBaseUrl = "https://ispot.runasp.net/api/";
   // static const String apiBaseUrl = "http://192.168.43.13:5158/api/";  // local with internet
   // static const String apiBaseUrl = "http://192.168.0.109:5158/api/";  // local with internet
-  // static const String apiBaseUrl = "http://192.168.1.7:5158/api/";  // local with internet
+  static const String apiBaseUrl = "http://192.168.1.6:5158/api/";  // local with internet
 
 
 

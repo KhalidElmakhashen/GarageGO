@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:legarage/core/di/dependency_injection.dart';
+import 'package:legarage/features/current_page/logic/timer_cost_cubit/timer_cost_cubit.dart';
 import 'package:legarage/features/current_page/ui/current_page.dart';
 import 'package:legarage/features/current_page/logic/delete_reservation_cubit/delete_reservation_cubit.dart';
 import 'package:legarage/features/explore_page/logic/add_reservation_cubit/add_reservation_cubit.dart';
@@ -74,6 +75,9 @@ class _HomePageState extends State<HomePage>
               ),
               BlocProvider(
                 create: (context) => getIt<DeleteReservationCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => TimerCostCubit(pricePerMinute: .25),
               ),
             ],
             child: const CurrentPage(),

@@ -32,7 +32,8 @@ class SignalRService {
     _connection = HubConnectionBuilder()
         .withUrl(
           // لاحِظ: استبدل بـ HTTPS في الإنتاج
-          "https://ispot.runasp.net/parkingHub",
+          // "https://ispot.runasp.net/parkingHub",
+          "http://192.168.1.6:5158/parkingHub",
           options: HttpConnectionOptions(
             accessTokenFactory: () async => token,
           ),
@@ -48,7 +49,9 @@ class SignalRService {
       // body: "the reservation is ensured int spot number ${args![0]}");
       if (args?.isNotEmpty ?? false) {
         _spotController.add(args![0]);
+
       }
+      print(args![0]);
       SharedPrefHelper.setData("spot", args![0]);
     });
 

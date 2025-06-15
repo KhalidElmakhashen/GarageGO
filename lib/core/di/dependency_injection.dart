@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:http/http.dart';
 import 'package:legarage/core/networking/api_service.dart';
 import 'package:legarage/core/networking/dio_factory.dart';
 import 'package:legarage/core/services/notification_service.dart';
@@ -7,6 +8,7 @@ import 'package:legarage/features/auth/verifing_email/data/repo/verifiy_repo.dar
 import 'package:legarage/features/auth/verifing_email/logic/verification_email_cubit.dart';
 import 'package:legarage/features/current_page/data/repo/delete_reservation_repo.dart';
 import 'package:legarage/features/current_page/logic/delete_reservation_cubit/delete_reservation_cubit.dart';
+import 'package:legarage/features/current_page/logic/timer_cost_cubit/timer_cost_cubit.dart';
 import 'package:legarage/features/explore_page/data/repo/get_garage_by_id_repo.dart';
 import 'package:legarage/features/explore_page/data/repo/reservation_repo.dart';
 import 'package:legarage/features/explore_page/logic/add_reservation_cubit/add_reservation_cubit.dart';
@@ -74,6 +76,9 @@ Future<void> setupGetIt() async {
 
   // notification service
   getIt.registerLazySingleton<NotificationService>(() => NotificationService());
+
+  // timerCostCubit
+  getIt.registerLazySingleton<TimerCostCubit>(() => TimerCostCubit(pricePerMinute: 25));
 
   
 

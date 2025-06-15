@@ -72,7 +72,8 @@ class _CameraStreamPageState extends State<CameraStreamPage> {
   void initState() {
     super.initState();
     _vlcViewController = VlcPlayerController.network(
-      'rtsp://192.168.1.6:8554/left',
+      // 'rtsp://192.168.1.6:8554/left',
+      'rtsp://127.0.0.1:8554/left',
       hwAcc: HwAcc.auto,
       autoPlay: true,
       options: VlcPlayerOptions(),

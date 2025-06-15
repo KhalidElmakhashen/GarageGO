@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://ispot.runasp.net/api/';
+    baseUrl ??= 'http://192.168.1.6:5158/api/';
   }
 
   final Dio _dio;
